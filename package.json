@@ -11,6 +11,7 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "vitest",
+    "test:e2e": "playwright test",
     "test:api": "tsx scripts/test-api.ts",
     "test:load": "tsx scripts/test-load.ts",
     "test:coverage": "vitest run --coverage"
@@ -21,17 +22,18 @@
     "react-dom": "19.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^2.1.4",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
+    "tsx": "^4.19.1",
     "typescript": "^5",
-    "@vitest/coverage-v8": "^2.1.4",
-    "vitest": "^2.1.4",
-    "tsx": "^4.19.1"
+    "vitest": "^2.1.4"
   }
 }
