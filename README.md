@@ -1,3 +1,18 @@
+# Servant Next.js Template
+
+This repository serves as a template or example repository for Servant engineering to use when scaffolding new Next.js applications or enhancing the reliability, maintainability, and scalability of existing Next.js applications.
+
+## About This Template
+
+This is essentially a clean commit of the output from `npx create-next-app@latest` with our standard suite of dev tooling and quality gates layered on top in a single commit. It provides:
+
+- **Standardized Development Environment**: Pre-configured with our preferred tooling
+- **Quality Gates**: Built-in linting, formatting, and testing setup
+- **Best Practices**: Following Servant engineering standards
+- **Maintainability**: Clean, well-documented code structure
+
+## Project Overview
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
