@@ -12,6 +12,7 @@
     "format": "prettier --write .",
     "test": "vitest",
     "test:api": "tsx scripts/test-api.ts",
+    "test:load": "tsx scripts/test-load.ts",
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
