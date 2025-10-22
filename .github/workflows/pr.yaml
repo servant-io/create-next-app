@@ -119,8 +119,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Generate Bible database
-        run: pnpm bible:ingest
-
       - name: Run tests
         run: pnpm test
