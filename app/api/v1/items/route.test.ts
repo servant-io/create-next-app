@@ -7,7 +7,7 @@ const ORIGINAL_API_KEY = process.env.API_KEY;
 const createRequest = (headers: Record<string, string> = {}) =>
   new Request("http://localhost/api/v1/items", { headers });
 
-const readJson = async (response: Response) => {
+const readJson = (response: Response) => {
   const cloned = response.clone();
   return cloned.json() as Promise<unknown>;
 };

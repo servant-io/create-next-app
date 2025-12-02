@@ -1,16 +1,35 @@
-import { nextJsConfig } from "./ema/eslint-config/next.js";
+import nextJsConfig from "eslint-config-next";
+
+const augmentedNextConfig = nextJsConfig.map((config) => {
+  if (config.name === "next/typescript") {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        "require-await": "error",
+      },
+    };
+  }
+
+  if (config.name === "next") {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        "@next/next/no-img-element": "error",
+      },
+    };
+  }
+
+  return config;
+});
 
 /** @type {import("eslint").Linter.Config} */
-export default [
-  ...nextJsConfig,
-  {
-    rules: {
-      // Keep async functions meaningful and enforce native <Image /> usage.
-      "@typescript-eslint/require-await": "error",
-      "@next/next/no-img-element": "error",
-    },
-  },
+const config = [
+  ...augmentedNextConfig,
   {
     ignores: ["coverage/**", "out/**", "build/**"],
   },
 ];
+
+export default config;
