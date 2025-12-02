@@ -6,8 +6,13 @@ type NextImageProps = ComponentProps<"img"> & { priority?: boolean };
 
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: ({ priority: _priority, ...props }: NextImageProps) => (
-    <img {...props} />
+  default: ({ priority, alt, ...props }: NextImageProps) => (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      {...props}
+      alt={alt ?? ""}
+      data-priority={priority ? "true" : undefined}
+    />
   ),
 }));
 
