@@ -46,7 +46,7 @@ const safeEquals = (left: string, right: string): boolean => {
   return timingSafeEqual(leftBuffer, rightBuffer);
 };
 
-export async function GET(request: Request) {
+export function GET(request: Request) {
   const configuredKey = process.env.API_KEY;
 
   if (!configuredKey) {

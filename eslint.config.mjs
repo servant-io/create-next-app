@@ -1,19 +1,35 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import nextJsConfig from "eslint-config-next";
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-    "coverage/**",
-  ]),
-]);
+const augmentedNextConfig = nextJsConfig.map((config) => {
+  if (config.name === "next/typescript") {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        "require-await": "error",
+      },
+    };
+  }
 
-export default eslintConfig;
+  if (config.name === "next") {
+    return {
+      ...config,
+      rules: {
+        ...config.rules,
+        "@next/next/no-img-element": "error",
+      },
+    };
+  }
+
+  return config;
+});
+
+/** @type {import("eslint").Linter.Config} */
+const config = [
+  ...augmentedNextConfig,
+  {
+    ignores: ["coverage/**", "out/**", "build/**"],
+  },
+];
+
+export default config;

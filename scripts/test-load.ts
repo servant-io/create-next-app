@@ -395,6 +395,13 @@ const executeLoadTest = async (
       }
 
       const scenario = SCENARIOS[current % SCENARIOS.length];
+      if (!scenario) {
+        failureCount += 1;
+        console.error(
+          `[test:load] No scenario configured for request ${current + 1}.`,
+        );
+        continue;
+      }
 
       const requestContext: RequestContext = {
         url: new URL(scenario.path ?? options.path, baseUrl),
@@ -504,21 +511,23 @@ const executeLoadTest = async (
 
   const sortedDurations = durations.slice().sort((a, b) => a - b);
 
-  const percentile = (p: number) => {
+  const percentile = (p: number): number => {
     if (sortedDurations.length === 0) {
       return 0;
     }
     const rank = (p / 100) * (sortedDurations.length - 1);
     const lowerIndex = Math.floor(rank);
     const upperIndex = Math.ceil(rank);
+    const lower = sortedDurations[lowerIndex];
+    const upper = sortedDurations[upperIndex];
+    if (lower === undefined || upper === undefined) {
+      return 0;
+    }
     if (lowerIndex === upperIndex) {
-      return sortedDurations[lowerIndex];
+      return lower;
     }
     const weight = rank - lowerIndex;
-    return (
-      sortedDurations[lowerIndex] * (1 - weight) +
-      sortedDurations[upperIndex] * weight
-    );
+    return lower * (1 - weight) + upper * weight;
   };
 
   return {
