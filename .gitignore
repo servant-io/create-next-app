@@ -24,7 +24,6 @@
 # misc
 .DS_Store
 *.pem
-/ema*
 
 # debug
 npm-debug.log*
