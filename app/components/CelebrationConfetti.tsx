@@ -3,7 +3,6 @@
 import Confetti from "react-confetti";
 import { useEffect, useState } from "react";
 
-const CONFETTI_DURATION_MS = 4000;
 const CONFETTI_PIECES = 160;
 
 export function CelebrationConfetti() {
@@ -21,14 +20,8 @@ export function CelebrationConfetti() {
     setIsActive(true);
     window.addEventListener("resize", updateSize);
 
-    const timeoutId = window.setTimeout(
-      () => setIsActive(false),
-      CONFETTI_DURATION_MS,
-    );
-
     return () => {
       window.removeEventListener("resize", updateSize);
-      window.clearTimeout(timeoutId);
     };
   }, []);
 
@@ -43,6 +36,7 @@ export function CelebrationConfetti() {
         height={viewportSize.height}
         numberOfPieces={CONFETTI_PIECES}
         recycle={false}
+        onConfettiComplete={() => setIsActive(false)}
       />
     </div>
   );
