@@ -7,7 +7,7 @@ const CONFETTI_PIECES = 160;
 
 export function CelebrationConfetti() {
   const [viewportSize, setViewportSize] = useState({ width: 0, height: 0 });
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
     const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -17,7 +17,6 @@ export function CelebrationConfetti() {
       setViewportSize({ width: window.innerWidth, height: window.innerHeight });
 
     updateSize();
-    setIsActive(true);
     window.addEventListener("resize", updateSize);
 
     return () => {
