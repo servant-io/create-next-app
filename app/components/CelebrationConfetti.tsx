@@ -37,17 +37,13 @@ export function CelebrationConfetti() {
   }
 
   return (
-    <Confetti
-      width={viewportSize.width}
-      height={viewportSize.height}
-      numberOfPieces={CONFETTI_PIECES}
-      recycle={false}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 30,
-        pointerEvents: "none",
-      }}
-    />
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-50">
+      <Confetti
+        width={viewportSize.width}
+        height={viewportSize.height}
+        numberOfPieces={CONFETTI_PIECES}
+        recycle={false}
+      />
+    </div>
   );
 }

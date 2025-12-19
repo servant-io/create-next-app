@@ -3,9 +3,9 @@ import { CelebrationConfetti } from "./components/CelebrationConfetti";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-zinc-50 font-sans dark:bg-black">
+    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-black">
       <CelebrationConfetti />
-      <div className="relative z-10 flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center">
         <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between bg-white px-16 py-32 dark:bg-black sm:items-start">
           <Image
             className="dark:invert"
