@@ -5,6 +5,7 @@ on:
 
 env:
   API_KEY: test-api-key
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   format-check:
