@@ -53,6 +53,7 @@ scripts/
 | `pnpm test:e2e`      | Playwright (Chrome, `127.0.0.1:3000`)                              |
 | `pnpm test:api`      | API integration test (`tsx scripts/test-api.ts`)                   |
 | `pnpm test:load`     | Load test with security payloads                                   |
+| `postinstall`        | Auto-runs `servant-agents-link` on `pnpm install`                  |
 
 ## Quality Gates (CI)
 
@@ -78,10 +79,20 @@ All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 - **Components:** Use `"use client"` directive only when needed. Respect accessibility (e.g., `prefers-reduced-motion`)
 - **API routes:** Use timing-safe comparison for auth. Return proper HTTP status codes
 
+## Servant Agents
+
+Org-shared Claude Code agents distributed via `@servant-io/servant-agents` (devDep, GitHub Packages).
+
+- **postinstall** runs `servant-agents-link` — symlinks agent `.md` files from the package into `.claude/agents/servant/`
+- Idempotent: skips already-linked agents, safe to re-run
+- `.claude/agents/servant/` is gitignored (derived from `node_modules`)
+- Auth: `.npmrc` routes `@servant-io` scope to `npm.pkg.github.com` via `$GITHUB_TOKEN`
+- See `.context/guides/servant-agents.md` for full details
+
 ## Dependencies (current)
 
 **Production:** next, react, react-dom, react-confetti
-**Dev:** playwright, tailwindcss, typescript, vitest, coverage-v8, eslint, prettier, tsx
+**Dev:** playwright, tailwindcss, typescript, vitest, coverage-v8, eslint, prettier, tsx, @servant-io/servant-agents
 
 ## Environment
 
@@ -92,27 +103,3 @@ All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 ---
 
 ## Current Task (.context/task.md)
-
-**Goal:** Install the `servant-agents` package from the private GitHub Packages registry in the `servant-io` organization.
-
-**Key details to resolve:**
-
-- Package name/scope (likely `@servant-io/servant-agents`)
-- GitHub PAT with `read:packages` scope for authenticating to GitHub Packages
-- `.npmrc` configuration to route `@servant-io` scope to `https://npm.pkg.github.com`
-- Whether this is a production dependency or devDependency
-- Any peer dependencies the package requires
-
-**Steps to install a private GitHub Package:**
-
-1. Ensure a GitHub PAT with `read:packages` permission exists
-2. Configure `.npmrc` at project root:
-   ```
-   @servant-io:registry=https://npm.pkg.github.com
-   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-   ```
-3. Run `pnpm add @servant-io/servant-agents` (or the exact package name)
-4. Verify the install succeeds and `pnpm build` / `pnpm typecheck` pass
-5. Update CI to provide `GITHUB_TOKEN` for private registry access
-
-**Prompt the user for:** exact package name, PAT availability, prod vs dev dependency, CI token setup preferences.

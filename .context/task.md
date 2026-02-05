@@ -1,3 +1,1 @@
-install the new servant-agents package from our private github packages repository in the servant-io organization
-
-prompt me for whatever details are required to facilitate the install
+now that we've installed the private servant-agents dev dep package now how might we use it to install the bundled agents with the packaged run script?

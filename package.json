@@ -14,7 +14,8 @@
     "test:e2e": "playwright test",
     "test:api": "tsx scripts/test-api.ts",
     "test:load": "tsx scripts/test-load.ts",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "postinstall": "servant-agents-link"
   },
   "dependencies": {
     "next": "16.0.10",
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
+    "@servant-io/servant-agents": "0.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
