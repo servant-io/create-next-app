@@ -14,7 +14,8 @@
     "test:e2e": "playwright test",
     "test:api": "tsx scripts/test-api.ts",
     "test:load": "tsx scripts/test-load.ts",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "postinstall": "servant-agents-link"
   },
   "dependencies": {
     "next": "16.0.10",
