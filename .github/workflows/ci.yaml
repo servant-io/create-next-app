@@ -3,6 +3,9 @@ name: CI Quality Gates
 on:
   push:
 
+permissions:
+  packages: read
+
 env:
   API_KEY: test-api-key
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
