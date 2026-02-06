@@ -24,9 +24,12 @@ importers:
       '@playwright/test':
         specifier: ^1.56.1
         version: 1.56.1
-      '@servant-io/servant-agents':
-        specifier: 0.1.0
-        version: 0.1.0
+      '@servant-io/agents':
+        specifier: 0.2.0
+        version: 0.2.0
+      '@servant-io/cli':
+        specifier: 0.2.0
+        version: 0.2.0
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.15
@@ -884,8 +887,11 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@servant-io/servant-agents@0.1.0':
-    resolution: {integrity: sha512-mtOB4/X+NXWuR77wR4b3Lg5ceAI2dm/X+T7ujmkgPUHGXLgP6VxD4Z6k87anyPJAZwjkvZ77Tp5fG24r/9RJ5g==, tarball: https://npm.pkg.github.com/download/@servant-io/servant-agents/0.1.0/a669f3eeda33008e94eff9e149fd628328b8c015}
+  '@servant-io/agents@0.2.0':
+    resolution: {integrity: sha512-I5jmjg11MiwECfrC05eBySMvki1DtCb1dXKgW0UlJV7eVsW8XW8qEKWm7v90UdKKpyI7pl2xgv5l69UydaPG4Q==, tarball: https://npm.pkg.github.com/download/@servant-io/agents/0.2.0/35efad6cb6193707e31fd0ce9e0438253cfa2b7c}
+
+  '@servant-io/cli@0.2.0':
+    resolution: {integrity: sha512-LwF/GtkBMc6hq3SQAkGTswlbaATV2PyRy6u/Zhh5S82/nk38RWqqJIbtzfHeLG7K7AZ/ByGa7V3o63BEqeFHBw==, tarball: https://npm.pkg.github.com/download/@servant-io/cli/0.2.0/1c80b0323cca5d45b2f707478c3ff4a31babca38}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -3373,7 +3379,11 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@servant-io/servant-agents@0.1.0': {}
+  '@servant-io/agents@0.2.0': {}
+
+  '@servant-io/cli@0.2.0':
+    dependencies:
+      '@servant-io/agents': 0.2.0
 
   '@swc/helpers@0.5.15':
     dependencies:

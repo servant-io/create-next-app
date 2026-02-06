@@ -53,7 +53,7 @@ scripts/
 | `pnpm test:e2e`      | Playwright (Chrome, `127.0.0.1:3000`)                              |
 | `pnpm test:api`      | API integration test (`tsx scripts/test-api.ts`)                   |
 | `pnpm test:load`     | Load test with security payloads                                   |
-| `postinstall`        | Auto-runs `servant-agents-link` on `pnpm install`                  |
+| `postinstall`        | Auto-runs `servant link-agents` on `pnpm install`                  |
 
 ## Quality Gates (CI)
 
@@ -81,9 +81,9 @@ All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 
 ## Servant Agents
 
-Org-shared Claude Code agents distributed via `@servant-io/servant-agents` (devDep, GitHub Packages).
+Org-shared Claude Code agents distributed via `@servant-io/agents` + `@servant-io/cli` (devDeps, GitHub Packages).
 
-- **postinstall** runs `servant-agents-link` — symlinks agent `.md` files from the package into `.claude/agents/servant/`
+- **postinstall** runs `servant link-agents` — symlinks agent `.md` files from the package into `.claude/agents/servant/`
 - Idempotent: skips already-linked agents, safe to re-run
 - `.claude/agents/servant/` is gitignored (derived from `node_modules`)
 - Auth: `.npmrc` routes `@servant-io` scope to `npm.pkg.github.com` via `$GITHUB_TOKEN`
@@ -92,7 +92,7 @@ Org-shared Claude Code agents distributed via `@servant-io/servant-agents` (devD
 ## Dependencies (current)
 
 **Production:** next, react, react-dom, react-confetti
-**Dev:** playwright, tailwindcss, typescript, vitest, coverage-v8, eslint, prettier, tsx, @servant-io/servant-agents
+**Dev:** playwright, tailwindcss, typescript, vitest, coverage-v8, eslint, prettier, tsx, @servant-io/agents, @servant-io/cli
 
 ## Environment
 
