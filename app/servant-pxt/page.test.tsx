@@ -49,6 +49,16 @@ vi.mock("@servant-io/cli/dist/lib.js", () => ({
   linkAgents: () => [],
 }));
 
+vi.mock("@servant-io/cli/dist/docs/index.js", () => ({
+  updateClaudeMd: () => [
+    {
+      phase: "claude-md",
+      ok: true,
+      message: "[claude-md] would update (1234/8192 bytes)",
+    },
+  ],
+}));
+
 import { renderToStaticMarkup } from "react-dom/server";
 import ServantPxtPage from "./page";
 
@@ -74,7 +84,9 @@ describe("servant-pxt demo page", () => {
     const html = renderToStaticMarkup(element);
     expect(html).toContain("@servant-io/cli");
     expect(html).toContain("linkAgents()");
-    expect(html).toContain("Agent, Skill, LinkResult, InitResult");
+    expect(html).toContain(
+      "Agent, Skill, LinkResult, InitResult, DocsUpdatePhaseResult",
+    );
   });
 
   it("renders the @servant-io/skills section with skill names", () => {
@@ -84,6 +96,14 @@ describe("servant-pxt demo page", () => {
     expect(html).toContain("lint-fix");
     expect(html).toContain("refactor");
     expect(html).toContain("2 skills loaded");
+  });
+
+  it("renders the @servant-io/cli updateClaudeMd section", () => {
+    const element = ServantPxtPage();
+    const html = renderToStaticMarkup(element);
+    expect(html).toContain("updateClaudeMd()");
+    expect(html).toContain("1 result(s) (dry-run)");
+    expect(html).toContain("[claude-md]");
   });
 
   it("renders the @servant-io/actions section with action details", () => {

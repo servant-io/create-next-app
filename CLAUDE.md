@@ -83,14 +83,14 @@ All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 
 ## Servant PXT Packages
 
-All 4 packages from the `servant-pxt` monorepo are installed via GitHub Packages under the `@servant-io` scope (v0.4.0):
+All 4 packages from the `servant-pxt` monorepo are installed via GitHub Packages under the `@servant-io` scope (v0.5.0):
 
-| Package               | Type                        | Key Exports                                                           |
-| --------------------- | --------------------------- | --------------------------------------------------------------------- |
-| `@servant-io/agents`  | Data-only (JSON + markdown) | `src/agents.json`, `src/templates/`                                   |
-| `@servant-io/cli`     | ESM library + CLI binary    | `linkAgents()`, `linkSkills()`, `initEngagement()`; binary: `servant` |
-| `@servant-io/skills`  | Data-only (JSON + markdown) | `src/skills.json`                                                     |
-| `@servant-io/actions` | GitHub Action (YAML)        | `docs-up-to-date/action.yml`                                          |
+| Package               | Type                        | Key Exports                                                                               |
+| --------------------- | --------------------------- | ----------------------------------------------------------------------------------------- |
+| `@servant-io/agents`  | Data-only (JSON + markdown) | `src/agents.json`, `src/templates/`                                                       |
+| `@servant-io/cli`     | ESM library + CLI binary    | `linkAgents()`, `linkSkills()`, `initEngagement()`, `updateClaudeMd()`; binary: `servant` |
+| `@servant-io/skills`  | Data-only (JSON + markdown) | `src/skills.json`                                                                         |
+| `@servant-io/actions` | GitHub Action (YAML)        | `docs-up-to-date/action.yml` (includes 8KB CLAUDE.md size check)                          |
 
 - **postinstall** runs `servant link-agents && servant link-skills` — symlinks agent `.md` files and skill `.md` files from packages into `.claude/agents/servant/` and `.claude/skills/servant/`
 - Idempotent: skips already-linked items, safe to re-run

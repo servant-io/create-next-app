@@ -18,10 +18,10 @@
     "postinstall": "servant link-agents && servant link-skills"
   },
   "dependencies": {
-    "@servant-io/actions": "0.4.0",
-    "@servant-io/agents": "0.4.0",
-    "@servant-io/cli": "0.4.0",
-    "@servant-io/skills": "0.4.0",
+    "@servant-io/actions": "0.5.0",
+    "@servant-io/agents": "0.5.0",
+    "@servant-io/cli": "0.5.0",
+    "@servant-io/skills": "0.5.0",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-confetti": "^6.4.0",

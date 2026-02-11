@@ -8,6 +8,10 @@ import {
   type LinkResult,
   type InitResult,
 } from "@servant-io/cli/dist/lib.js";
+import {
+  updateClaudeMd,
+  type DocsUpdatePhaseResult,
+} from "@servant-io/cli/dist/docs/index.js";
 
 // Render on-demand — reads from node_modules at runtime
 export const dynamic = "force-dynamic";
@@ -76,6 +80,12 @@ export default function ServantPxtPage() {
   // @servant-io/cli — prove linkAgents is callable (empty manifest → empty array)
   const linkResult: LinkResult[] = linkAgents("", "", []);
 
+  // @servant-io/cli — prove updateClaudeMd is callable (dry-run, no writes)
+  const claudeMdResults: DocsUpdatePhaseResult[] = updateClaudeMd({
+    workspaceRoot: process.cwd(),
+    dryRun: true,
+  });
+
   // Type annotations proving CLI types are importable
   const _agentType: Agent | null = null;
   const _skillType: Skill | null = null;
@@ -95,7 +105,7 @@ export default function ServantPxtPage() {
         <section>
           <h2 className="mb-4 text-xl font-semibold text-black dark:text-zinc-50">
             @servant-io/agents{" "}
-            <span className="text-sm font-normal text-zinc-500">v0.4.0</span>
+            <span className="text-sm font-normal text-zinc-500">v0.5.0</span>
           </h2>
           <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-400">
             {agents.length} agents loaded from agents.json
@@ -121,14 +131,40 @@ export default function ServantPxtPage() {
         <section>
           <h2 className="mb-4 text-xl font-semibold text-black dark:text-zinc-50">
             @servant-io/cli{" "}
-            <span className="text-sm font-normal text-zinc-500">v0.4.0</span>
+            <span className="text-sm font-normal text-zinc-500">v0.5.0</span>
           </h2>
           <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-400">
             linkAgents() returned {linkResult.length} results (empty manifest
             dry-run)
           </p>
+          <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-400">
+            updateClaudeMd() returned {claudeMdResults.length} result(s)
+            (dry-run)
+          </p>
+          <ul className="space-y-1">
+            {claudeMdResults.map((r, i) => (
+              <li
+                key={i}
+                className="rounded border border-zinc-200 p-2 text-sm dark:border-zinc-700"
+              >
+                <span
+                  className={
+                    r.ok
+                      ? "font-medium text-green-600 dark:text-green-400"
+                      : "font-medium text-red-600 dark:text-red-400"
+                  }
+                >
+                  [{r.phase}]
+                </span>{" "}
+                <span className="text-zinc-600 dark:text-zinc-400">
+                  {r.message}
+                </span>
+              </li>
+            ))}
+          </ul>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Types imported: Agent, Skill, LinkResult, InitResult
+            Types imported: Agent, Skill, LinkResult, InitResult,
+            DocsUpdatePhaseResult
           </p>
         </section>
 
@@ -136,7 +172,7 @@ export default function ServantPxtPage() {
         <section>
           <h2 className="mb-4 text-xl font-semibold text-black dark:text-zinc-50">
             @servant-io/skills{" "}
-            <span className="text-sm font-normal text-zinc-500">v0.4.0</span>
+            <span className="text-sm font-normal text-zinc-500">v0.5.0</span>
           </h2>
           <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-400">
             {skills.length} skills loaded from skills.json
@@ -162,7 +198,7 @@ export default function ServantPxtPage() {
         <section>
           <h2 className="mb-4 text-xl font-semibold text-black dark:text-zinc-50">
             @servant-io/actions{" "}
-            <span className="text-sm font-normal text-zinc-500">v0.4.0</span>
+            <span className="text-sm font-normal text-zinc-500">v0.5.0</span>
           </h2>
           <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-400">
             GitHub Action parsed from action.yml
