@@ -36,30 +36,30 @@ scripts/
 ├── test-api.ts                 # API integration test (tsx)
 └── test-load.ts                # Load/security testing
 .github/
-├── workflows/ci.yaml           # 7 parallel CI jobs on push
+├── workflows/ci.yaml           # 8 parallel CI jobs on push
 └── pull_request_template.md    # PR template (TL;DR, Details, How to Test, GIF)
 ```
 
 ## Commands
 
-| Command              | Purpose                                                            |
-| -------------------- | ------------------------------------------------------------------ |
-| `pnpm dev`           | Dev server                                                         |
-| `pnpm build`         | Production build                                                   |
-| `pnpm lint`          | ESLint (`--max-warnings 0`)                                        |
-| `pnpm typecheck`     | `tsc --noEmit`                                                     |
-| `pnpm format:check`  | Prettier check                                                     |
-| `pnpm format`        | Prettier write                                                     |
-| `pnpm test`          | Vitest unit/component tests                                        |
-| `pnpm test:coverage` | Vitest with 70% threshold (lines, functions, branches, statements) |
-| `pnpm test:e2e`      | Playwright (Chrome, `127.0.0.1:3000`)                              |
-| `pnpm test:api`      | API integration test (`tsx scripts/test-api.ts`)                   |
-| `pnpm test:load`     | Load test with security payloads                                   |
-| `postinstall`        | Auto-runs `servant link-agents && servant link-skills` on install  |
+| Command              | Purpose                                                                       |
+| -------------------- | ----------------------------------------------------------------------------- |
+| `pnpm dev`           | Dev server                                                                    |
+| `pnpm build`         | Production build                                                              |
+| `pnpm lint`          | ESLint (`--max-warnings 0`)                                                   |
+| `pnpm typecheck`     | `tsc --noEmit`                                                                |
+| `pnpm format:check`  | Prettier check                                                                |
+| `pnpm format`        | Prettier write                                                                |
+| `pnpm test`          | Vitest unit/component tests                                                   |
+| `pnpm test:coverage` | Vitest with 70% threshold (lines, functions, branches, statements)            |
+| `pnpm test:e2e`      | Playwright (Chrome, `127.0.0.1:3000`)                                         |
+| `pnpm test:api`      | API integration test (`tsx scripts/test-api.ts`)                              |
+| `pnpm test:load`     | Load test with security payloads                                              |
+| `postinstall`        | Auto-runs `servant link-agents && servant link-skills && servant docs update` |
 
 ## Quality Gates (CI)
 
-All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
+All 8 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 
 1. `format-check` — Prettier
 2. `lint` — ESLint zero-warnings
@@ -68,6 +68,7 @@ All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 5. `test` — Vitest
 6. `test-coverage` — 70% minimum coverage
 7. `test-e2e` — Playwright
+8. `docs-up-to-date` — Verify context docs are in sync
 
 **CI env:** `API_KEY=test-api-key`
 
@@ -92,7 +93,7 @@ All 4 packages from the `servant-pxt` monorepo are installed via GitHub Packages
 | `@servant-io/skills`  | Data-only (JSON + markdown) | `src/skills.json`                                                                         |
 | `@servant-io/actions` | GitHub Action (YAML)        | `docs-up-to-date/action.yml` (includes 8KB CLAUDE.md size check)                          |
 
-- **postinstall** runs `servant link-agents && servant link-skills` — symlinks agent `.md` files and skill `.md` files from packages into `.claude/agents/servant/` and `.claude/skills/servant/`
+- **postinstall** runs `servant link-agents && servant link-skills && servant docs update` — symlinks agent/skill `.md` files into `.claude/agents/servant/` and `.claude/skills/servant/`, then updates context docs and CLAUDE.md
 - Idempotent: skips already-linked items, safe to re-run
 - `.claude/agents/servant/` and `.claude/skills/servant/` are gitignored (derived from `node_modules`)
 - Auth: `.npmrc` routes `@servant-io` scope to `npm.pkg.github.com` via `$GITHUB_TOKEN`
@@ -108,6 +109,37 @@ All 4 packages from the `servant-pxt` monorepo are installed via GitHub Packages
 - `.env.example` — template with `API_KEY`, `API_BASE_URL`
 - `.env.local` — runtime config (gitignored)
 - Never commit secrets or `.env` files
+
+<!-- auto:engagements -->
+
+### Engagements — client engagement artifacts
+
+<!-- /auto:engagements -->
+
+<!-- auto:guides -->
+
+### Guides
+
+`.context/guides/nextjs-getting-started.md` — Getting Started
+`.context/guides/servant-agents.md` — servant-agents
+
+<!-- /auto:guides -->
+
+<!-- auto:agents -->
+
+### Agents
+
+`.claude/agents/servant/` — symlinks → `packages/agents/src/agents/`:
+
+<!-- /auto:agents -->
+
+<!-- auto:skills -->
+
+### Skills
+
+`.claude/agents/skills/` — directory symlinks → `packages/agents/src/skills/`:
+
+<!-- /auto:skills -->
 
 ---
 

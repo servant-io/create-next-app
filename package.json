@@ -15,7 +15,7 @@
     "test:api": "tsx scripts/test-api.ts",
     "test:load": "tsx scripts/test-load.ts",
     "test:coverage": "vitest run --coverage",
-    "postinstall": "servant link-agents && servant link-skills"
+    "postinstall": "servant link-agents && servant link-skills && servant docs update"
   },
   "dependencies": {
     "@servant-io/actions": "0.5.0",

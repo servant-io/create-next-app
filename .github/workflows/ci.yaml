@@ -174,3 +174,32 @@ jobs:
 
       - name: Run E2E tests
         run: pnpm test:e2e
+
+  docs-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Update docs
+        run: pnpm exec servant docs update
+
+      - name: Verify no changes
+        run: |
+          git diff --exit-code
+          test -z "$(git status --porcelain)"

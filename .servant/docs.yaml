@@ -1,0 +1,4 @@
+updateDocs:
+  sources:
+    - name: nextjs-getting-started
+      url: https://nextjs.org/docs/app/getting-started.md
