@@ -8,6 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@servant-io/actions':
+        specifier: 0.4.0
+        version: 0.4.0(@servant-io/cli@0.4.0)
+      '@servant-io/agents':
+        specifier: 0.4.0
+        version: 0.4.0
+      '@servant-io/cli':
+        specifier: 0.4.0
+        version: 0.4.0
+      '@servant-io/skills':
+        specifier: 0.4.0
+        version: 0.4.0
       next:
         specifier: 16.0.10
         version: 16.0.10(@babel/core@7.28.4)(@playwright/test@1.56.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -20,13 +32,13 @@ importers:
       react-dom:
         specifier: 19.2.1
         version: 19.2.1(react@19.2.1)
+      yaml:
+        specifier: ^2.8.2
+        version: 2.8.2
     devDependencies:
       '@playwright/test':
         specifier: ^1.56.1
         version: 1.56.1
-      '@servant-io/servant-agents':
-        specifier: 0.1.0
-        version: 0.1.0
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.15
@@ -884,10 +896,21 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@servant-io/servant-agents@0.1.0':
-    resolution: {integrity: sha512-mtOB4/X+NXWuR77wR4b3Lg5ceAI2dm/X+T7ujmkgPUHGXLgP6VxD4Z6k87anyPJAZwjkvZ77Tp5fG24r/9RJ5g==, tarball: https://npm.pkg.github.com/download/@servant-io/servant-agents/0.1.0/a669f3eeda33008e94eff9e149fd628328b8c015}
+  '@servant-io/actions@0.4.0':
+    resolution: {integrity: sha512-VKgMWenIP9ApnTZCs0hkXtHs7L9tZom2dyrKMDVMMfWvKKAT1k9BVn1rBDBA7tLkUzFEWYPwe9tglSGFC1lKPg==, tarball: https://npm.pkg.github.com/download/@servant-io/actions/0.4.0/846d09a4faee62a8e63ee2261b6fbbaa7b0de660}
+    peerDependencies:
+      '@servant-io/cli': ^0.4.0
+
+  '@servant-io/agents@0.4.0':
+    resolution: {integrity: sha512-2nkoc1O8ohEfe6e4bwDAhv0W6FRyvtvI/dJK6dMK3dQ2eyUu7bdeJOVCSk2g6cgGg8ZNa20JvDd6XifzwS/6aA==, tarball: https://npm.pkg.github.com/download/@servant-io/agents/0.4.0/59f8e21b3deafe195472909d09b9d73dbf691cda}
+
+  '@servant-io/cli@0.4.0':
+    resolution: {integrity: sha512-Zdt48J697CnKx5Fi+nVn/Wbe8LVc+3am4465TLKCiI7m4HA3CWHpWahtNhzwzu6LuxW8S9VzPQNbXfADu2bTPw==, tarball: https://npm.pkg.github.com/download/@servant-io/cli/0.4.0/c19cca5fb5d20f8718a45a448dbdfdab4778f1fc}
     engines: {node: '>=18.0.0'}
     hasBin: true
+
+  '@servant-io/skills@0.4.0':
+    resolution: {integrity: sha512-yrLBKxEAKn2hIKvTx4YEqNMcL+dsuQ5BmGZxFalUjzgEaEqbSt/Ag79JH+tkFy3oYwv7SrwcFKQqimgiKdMneA==, tarball: https://npm.pkg.github.com/download/@servant-io/skills/0.4.0/cd86d183c9187eef2ac8efd0b2d986487511d98e}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -2784,6 +2807,11 @@ packages:
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
+  yaml@2.8.2:
+    resolution: {integrity: sha512-mplynKqc1C2hTVYxd0PU2xQAc22TI1vShAYGksCCfxbn/dFwnHTNi1bvYsBTkhdUNtGIf5xNOg938rrSSYvS9A==}
+    engines: {node: '>= 14.6'}
+    hasBin: true
+
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
@@ -3373,7 +3401,20 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@servant-io/servant-agents@0.1.0': {}
+  '@servant-io/actions@0.4.0(@servant-io/cli@0.4.0)':
+    dependencies:
+      '@servant-io/cli': 0.4.0
+
+  '@servant-io/agents@0.4.0': {}
+
+  '@servant-io/cli@0.4.0':
+    dependencies:
+      '@servant-io/agents': 0.4.0
+      '@servant-io/skills': 0.4.0
+      picomatch: 4.0.3
+      yaml: 2.8.2
+
+  '@servant-io/skills@0.4.0': {}
 
   '@swc/helpers@0.5.15':
     dependencies:
@@ -5626,6 +5667,8 @@ snapshots:
       strip-ansi: 7.1.2
 
   yallist@3.1.1: {}
+
+  yaml@2.8.2: {}
 
   yocto-queue@0.1.0: {}
 

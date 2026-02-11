@@ -44,6 +44,52 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## servant-pxt Packages
+
+This app uses all 4 packages from the `servant-pxt` monorepo, published to GitHub Packages under the `@servant-io` scope:
+
+| Package               | Description                                                                     |
+| --------------------- | ------------------------------------------------------------------------------- |
+| `@servant-io/agents`  | Agent definitions (JSON + markdown templates)                                   |
+| `@servant-io/cli`     | CLI binary (`servant`) + library (`linkAgents`, `linkSkills`, `initEngagement`) |
+| `@servant-io/skills`  | Skill definitions (JSON + markdown)                                             |
+| `@servant-io/actions` | GitHub Action (composite action YAML)                                           |
+
+### Setup
+
+1. **GitHub Token**: You need a `GITHUB_TOKEN` with `read:packages` scope to install from GitHub Packages.
+
+   ```bash
+   # Option A: export in your shell
+   export GITHUB_TOKEN=ghp_your_token_here
+
+   # Option B: add to .env.local (gitignored)
+   echo "GITHUB_TOKEN=ghp_your_token_here" >> .env.local
+   ```
+
+2. **Install dependencies**:
+
+   ```bash
+   pnpm install
+   ```
+
+3. **Verify** the demo page works:
+   ```bash
+   pnpm dev
+   # Navigate to http://localhost:3000/servant-pxt
+   ```
+
+### Verification Checklist
+
+- `pnpm install` succeeds without `file:`/`link:` references
+- `pnpm dev` runs, navigate to `/servant-pxt` to see all packages in use
+- `pnpm build` passes
+- `pnpm lint` passes
+- Lockfile entries point to `npm.pkg.github.com`:
+  ```bash
+  grep "npm.pkg.github.com" pnpm-lock.yaml
+  ```
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
