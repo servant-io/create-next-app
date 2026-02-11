@@ -111,34 +111,27 @@ All 4 packages from the `servant-pxt` monorepo are installed via GitHub Packages
 - Never commit secrets or `.env` files
 
 <!-- auto:engagements -->
-
 ### Engagements — client engagement artifacts
 
 <!-- /auto:engagements -->
 
 <!-- auto:guides -->
-
 ### Guides
 
 `.context/guides/nextjs-getting-started.md` — Getting Started
 `.context/guides/servant-agents.md` — servant-agents
-
 <!-- /auto:guides -->
 
 <!-- auto:agents -->
-
 ### Agents
 
 `.claude/agents/servant/` — symlinks → `packages/agents/src/agents/`:
-
 <!-- /auto:agents -->
 
 <!-- auto:skills -->
-
 ### Skills
 
 `.claude/agents/skills/` — directory symlinks → `packages/agents/src/skills/`:
-
 <!-- /auto:skills -->
 
 ---
