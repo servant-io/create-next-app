@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.servant-brand {
+  --servant-red: #f00201;
+  --servant-paper-white: #f7f5f2;
+  --servant-ink: #111111;
+  --servant-soft-ink: #4a4a4a;
+  --servant-deep-maroon: #210303;
+  --font-heading: "Canela", "Georgia", serif;
+  --font-body: "SF Pro Text", "Inter", system-ui, sans-serif;
+}
