@@ -55,7 +55,7 @@ scripts/
 | `pnpm test:e2e`      | Playwright (Chrome, `127.0.0.1:3000`)                              |
 | `pnpm test:api`      | API integration test (`tsx scripts/test-api.ts`)                   |
 | `pnpm test:load`     | Load test with security payloads                                   |
-| `postinstall`        | Auto-runs `servant link-agents && servant link-skills` on install  |
+| `postinstall`        | Auto-runs `servant link-agents/skills/product-os` on install       |
 
 ## Quality Gates (CI)
 
@@ -83,24 +83,26 @@ All 7 jobs run in parallel on every push (`.github/workflows/ci.yaml`):
 
 ## Servant PXT Packages
 
-All 4 packages from the `servant-pxt` monorepo are installed via GitHub Packages under the `@servant-io` scope (v0.4.0):
+All 6 packages from the `servant-pxt` monorepo are installed via GitHub Packages under the `@servant-io` scope (v0.7.5):
 
-| Package               | Type                        | Key Exports                                                           |
-| --------------------- | --------------------------- | --------------------------------------------------------------------- |
-| `@servant-io/agents`  | Data-only (JSON + markdown) | `src/agents.json`, `src/templates/`                                   |
-| `@servant-io/cli`     | ESM library + CLI binary    | `linkAgents()`, `linkSkills()`, `initEngagement()`; binary: `servant` |
-| `@servant-io/skills`  | Data-only (JSON + markdown) | `src/skills.json`                                                     |
-| `@servant-io/actions` | GitHub Action (YAML)        | `docs-up-to-date/action.yml`                                          |
+| Package                        | Type                        | Key Exports                                                           |
+| ------------------------------ | --------------------------- | --------------------------------------------------------------------- |
+| `@servant-io/agents`           | Data-only (JSON + markdown) | `src/agents.json`, `src/templates/`                                   |
+| `@servant-io/cli`              | ESM library + CLI binary    | `linkAgents()`, `linkSkills()`, `initEngagement()`; binary: `servant` |
+| `@servant-io/skills`           | Data-only (JSON + markdown) | `src/skills.json`                                                     |
+| `@servant-io/product-os`       | Data-only (JSON + markdown) | `src/skills.json` (6 phase skills)                                    |
+| `@servant-io/actions`          | GitHub Action (YAML)        | `docs-up-to-date/action.yml`                                          |
+| `@servant-io/pre-commit-hooks` | ESM library + CLI binary    | `verifyClaudeMd()`, `verifyVersions()`                                |
 
-- **postinstall** runs `servant link-agents && servant link-skills` — symlinks agent `.md` files and skill `.md` files from packages into `.claude/agents/servant/` and `.claude/skills/servant/`
+- **postinstall** runs `servant link-agents && servant link-skills && servant link-product-os` — symlinks agents, skills, and product-os phase skills
 - Idempotent: skips already-linked items, safe to re-run
 - `.claude/agents/servant/` and `.claude/skills/servant/` are gitignored (derived from `node_modules`)
 - Auth: `.npmrc` routes `@servant-io` scope to `npm.pkg.github.com` via `$GITHUB_TOKEN`
-- Demo route at `/servant-pxt` exercises all 4 packages in a server component
+- Demo route at `/servant-pxt` exercises all 6 packages in a server component
 
 ## Dependencies (current)
 
-**Production:** next, react, react-dom, react-confetti, @servant-io/agents, @servant-io/cli, @servant-io/skills, @servant-io/actions, yaml
+**Production:** next, react, react-dom, react-confetti, @servant-io/agents, @servant-io/cli, @servant-io/skills, @servant-io/product-os, @servant-io/actions, @servant-io/pre-commit-hooks, yaml
 **Dev:** playwright, tailwindcss, typescript, vitest, coverage-v8, eslint, prettier, tsx
 
 ## Environment

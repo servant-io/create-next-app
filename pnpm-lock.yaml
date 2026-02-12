@@ -9,17 +9,23 @@ importers:
   .:
     dependencies:
       '@servant-io/actions':
-        specifier: 0.4.0
-        version: 0.4.0(@servant-io/cli@0.4.0)
+        specifier: 0.7.5
+        version: 0.7.5(@servant-io/cli@0.7.5)
       '@servant-io/agents':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.7.5
+        version: 0.7.5
       '@servant-io/cli':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.7.5
+        version: 0.7.5
+      '@servant-io/pre-commit-hooks':
+        specifier: 0.7.5
+        version: 0.7.5
+      '@servant-io/product-os':
+        specifier: 0.7.5
+        version: 0.7.5
       '@servant-io/skills':
-        specifier: 0.4.0
-        version: 0.4.0
+        specifier: 0.7.5
+        version: 0.7.5
       next:
         specifier: 16.0.10
         version: 16.0.10(@babel/core@7.28.4)(@playwright/test@1.56.1)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -896,21 +902,29 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
-  '@servant-io/actions@0.4.0':
-    resolution: {integrity: sha512-VKgMWenIP9ApnTZCs0hkXtHs7L9tZom2dyrKMDVMMfWvKKAT1k9BVn1rBDBA7tLkUzFEWYPwe9tglSGFC1lKPg==, tarball: https://npm.pkg.github.com/download/@servant-io/actions/0.4.0/846d09a4faee62a8e63ee2261b6fbbaa7b0de660}
+  '@servant-io/actions@0.7.5':
+    resolution: {integrity: sha512-aBV47+I3h4vhz6//Vje5wJM4rprdiurz+XxmEc1C9p8rqTDtiF6riS0Tdh3h0EpCh/SJgRcnZl7PqUCfq53HHw==, tarball: https://npm.pkg.github.com/download/@servant-io/actions/0.7.5/60bcd6e3f8cfc2c83f4ef31a9581dbef02e9b220}
     peerDependencies:
-      '@servant-io/cli': ^0.4.0
+      '@servant-io/cli': ^0.6.0
 
-  '@servant-io/agents@0.4.0':
-    resolution: {integrity: sha512-2nkoc1O8ohEfe6e4bwDAhv0W6FRyvtvI/dJK6dMK3dQ2eyUu7bdeJOVCSk2g6cgGg8ZNa20JvDd6XifzwS/6aA==, tarball: https://npm.pkg.github.com/download/@servant-io/agents/0.4.0/59f8e21b3deafe195472909d09b9d73dbf691cda}
+  '@servant-io/agents@0.7.5':
+    resolution: {integrity: sha512-ELAhPHJsSCyrxIrWL6RXpxEVgseRT36K3GhaS16mSIterpZV1CHfssvUyv6qwmRtWjcEQ4WwFQSV0YjWgYhNFg==, tarball: https://npm.pkg.github.com/download/@servant-io/agents/0.7.5/29f1846374b26d352f6aefbd33a5fb2fe8688c0a}
 
-  '@servant-io/cli@0.4.0':
-    resolution: {integrity: sha512-Zdt48J697CnKx5Fi+nVn/Wbe8LVc+3am4465TLKCiI7m4HA3CWHpWahtNhzwzu6LuxW8S9VzPQNbXfADu2bTPw==, tarball: https://npm.pkg.github.com/download/@servant-io/cli/0.4.0/c19cca5fb5d20f8718a45a448dbdfdab4778f1fc}
+  '@servant-io/cli@0.7.5':
+    resolution: {integrity: sha512-CpmPOEMSPpYQHtQC8vntI5BjxcTQCGyVnU/N3sbOF6AkEzY63FS174HZ29QOFqcm3ZxSRAJOSo8R4AI3diucBQ==, tarball: https://npm.pkg.github.com/download/@servant-io/cli/0.7.5/fe070b87fc070c804c7cc482aafca708c7b97d23}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  '@servant-io/skills@0.4.0':
-    resolution: {integrity: sha512-yrLBKxEAKn2hIKvTx4YEqNMcL+dsuQ5BmGZxFalUjzgEaEqbSt/Ag79JH+tkFy3oYwv7SrwcFKQqimgiKdMneA==, tarball: https://npm.pkg.github.com/download/@servant-io/skills/0.4.0/cd86d183c9187eef2ac8efd0b2d986487511d98e}
+  '@servant-io/pre-commit-hooks@0.7.5':
+    resolution: {integrity: sha512-91pigGBI0VpIWF8xCP4GYGLZHYGaw+YskHo0v68bhS1XuQ6551QMcULwB36BzTLrhiNjDXiSG2OP7QKHbGTrpw==, tarball: https://npm.pkg.github.com/download/@servant-io/pre-commit-hooks/0.7.5/ecfcd8be20e3320e6347800925a925dfbb1f202a}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+
+  '@servant-io/product-os@0.7.5':
+    resolution: {integrity: sha512-1099Jad5HXRGtWjfro0uDpsNuPA4SdqReBV+djs8fwdXohnojHS2ULkWOzpEYlnNI1hVRYUGgdWnzUmr6RNSXQ==, tarball: https://npm.pkg.github.com/download/@servant-io/product-os/0.7.5/d188897c61e25cd24f41a33eb84c8c89aece15b7}
+
+  '@servant-io/skills@0.7.5':
+    resolution: {integrity: sha512-CMF7xeoPItwbrGyz7H1artvQ6s764e7qvn2dBBaCCUxuqGvpa5M0Q7z65GE0EnGPH3kAF2vXta+gOJm3bgzFAQ==, tarball: https://npm.pkg.github.com/download/@servant-io/skills/0.7.5/b41051e212916b48e923dc8110ad778ad268dab1}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -3401,20 +3415,25 @@ snapshots:
 
   '@rtsao/scc@1.1.0': {}
 
-  '@servant-io/actions@0.4.0(@servant-io/cli@0.4.0)':
+  '@servant-io/actions@0.7.5(@servant-io/cli@0.7.5)':
     dependencies:
-      '@servant-io/cli': 0.4.0
+      '@servant-io/cli': 0.7.5
 
-  '@servant-io/agents@0.4.0': {}
+  '@servant-io/agents@0.7.5': {}
 
-  '@servant-io/cli@0.4.0':
+  '@servant-io/cli@0.7.5':
     dependencies:
-      '@servant-io/agents': 0.4.0
-      '@servant-io/skills': 0.4.0
+      '@servant-io/agents': 0.7.5
+      '@servant-io/product-os': 0.7.5
+      '@servant-io/skills': 0.7.5
       picomatch: 4.0.3
       yaml: 2.8.2
 
-  '@servant-io/skills@0.4.0': {}
+  '@servant-io/pre-commit-hooks@0.7.5': {}
+
+  '@servant-io/product-os@0.7.5': {}
+
+  '@servant-io/skills@0.7.5': {}
 
   '@swc/helpers@0.5.15':
     dependencies:

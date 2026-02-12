@@ -15,13 +15,15 @@
     "test:api": "tsx scripts/test-api.ts",
     "test:load": "tsx scripts/test-load.ts",
     "test:coverage": "vitest run --coverage",
-    "postinstall": "servant link-agents && servant link-skills"
+    "postinstall": "servant link-agents && servant link-skills && servant link-product-os"
   },
   "dependencies": {
-    "@servant-io/actions": "0.4.0",
-    "@servant-io/agents": "0.4.0",
-    "@servant-io/cli": "0.4.0",
-    "@servant-io/skills": "0.4.0",
+    "@servant-io/actions": "0.7.5",
+    "@servant-io/agents": "0.7.5",
+    "@servant-io/cli": "0.7.5",
+    "@servant-io/pre-commit-hooks": "0.7.5",
+    "@servant-io/product-os": "0.7.5",
+    "@servant-io/skills": "0.7.5",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-confetti": "^6.4.0",
