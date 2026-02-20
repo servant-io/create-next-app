@@ -1,7 +1,8 @@
 name: CI Quality Gates
 
 on:
-  push:
+  pull_request:
+    branches: [main]
 
 permissions:
   packages: read
